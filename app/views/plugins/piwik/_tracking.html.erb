@@ -1,0 +1,26 @@
+<% if Rails.env.production? %>
+<script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//<%= site.plugin_value :piwik, :piwik_url %>";
+          _paq.push(['setTrackerUrl', u+'/piwik.php']);
+          _paq.push(['setSiteId', <%= site.plugin_value(:piwik, :site_id).to_i %>]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'/piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+</script>
+<noscript>
+  <p><img src="//<%= site.plugin_value :piwik, :piwik_url %>/piwik.php?idsite=<%= site.plugin_value(:piwik, :site_id).to_i %>" style="border:0" alt="" /></p>
+</noscript>
+<% else %>
+  <!--
+  piwik plugin is active and will render in this place in production environment.
+
+  piwik url: <%= site.plugin_value :piwik, :piwik_url %>
+  site_id: <%= site.plugin_value :piwik, :site_id %>
+  -->
+<% end %>
+
+

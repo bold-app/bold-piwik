@@ -1,0 +1,7 @@
+en:
+  plugins:
+    piwik:
+      settings:
+        url: Base URL of your Piwik installation
+        site_id: Piwik Site-Id
+
